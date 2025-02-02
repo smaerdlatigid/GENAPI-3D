@@ -3,6 +3,10 @@ Micro ML API for 3D Generation
 
 Model Details: https://github.com/microsoft/TRELLIS
 
+![](assets/isoroom.png)
+
+![](assets/isoroom.gif)
+
 ## Set up
 
 Build the docker image using cog:
