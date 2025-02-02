@@ -405,6 +405,10 @@ with gr.Blocks(delete_cache=(600, 600)) as demo:
 
 # Launch the Gradio app
 if __name__ == "__main__":
+    import os
+    cache_directory = "./model_cache"
+    os.environ["TRANSFORMERS_CACHE"] = cache_directory
+    os.environ["TORCH_HOME"] = cache_directory
     pipeline = TrellisImageTo3DPipeline.from_pretrained("JeffreyXiang/TRELLIS-image-large")
     pipeline.cuda()
     try:
