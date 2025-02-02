@@ -15,6 +15,12 @@ from trellis.pipelines import TrellisImageTo3DPipeline
 from trellis.representations import Gaussian, MeshExtractResult
 from trellis.utils import render_utils, postprocessing_utils
 
+# TODO move to a run script, set with -e flag
+cache_directory = "./model_cache"
+os.environ["TRANSFORMERS_CACHE"] = cache_directory
+os.environ["MODEL_CACHE"] = cache_directory
+os.environ["TORCH_HOME"] = cache_directory
+os.environ["HF_HOME"] = cache_directory
 
 MAX_SEED = np.iinfo(np.int32).max
 TMP_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tmp')
@@ -405,11 +411,10 @@ with gr.Blocks(delete_cache=(600, 600)) as demo:
 
 # Launch the Gradio app
 if __name__ == "__main__":
-    import os
-    cache_directory = "./model_cache"
-    os.environ["TRANSFORMERS_CACHE"] = cache_directory
-    os.environ["TORCH_HOME"] = cache_directory
-    pipeline = TrellisImageTo3DPipeline.from_pretrained("JeffreyXiang/TRELLIS-image-large")
+
+    pipeline = TrellisImageTo3DPipeline.from_pretrained(
+        "JeffreyXiang/TRELLIS-image-large")
+
     pipeline.cuda()
     try:
         pipeline.preprocess_image(Image.fromarray(np.zeros((512, 512, 3), dtype=np.uint8)))    # Preload rembg
