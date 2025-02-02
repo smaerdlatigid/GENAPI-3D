@@ -16,6 +16,8 @@ from trellis.representations import Gaussian, MeshExtractResult
 from trellis.utils import render_utils, postprocessing_utils
 
 # TODO move to a run script, set with -e flag
+# try this: https://github.com/replicate/cog/pull/1253
+# otherwise edit the trellis code to use the cache directory
 cache_directory = "./model_cache"
 os.environ["TRANSFORMERS_CACHE"] = cache_directory
 os.environ["MODEL_CACHE"] = cache_directory
