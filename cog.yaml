@@ -18,6 +18,7 @@ build:
     - onnxruntime==1.20.1
     - trimesh==4.5.3
     - xatlas==0.0.9
+    - spaces>=0.32.0
     - pyvista==0.44.2
     - pymeshfix==0.17.0
     - igraph==0.11.8
